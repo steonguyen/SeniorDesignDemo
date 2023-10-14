@@ -32,7 +32,7 @@
                 android:id="@+id/degreeVal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="70dp"
+                android:layout_marginStart="90dp"
                 android:layout_marginTop="15dp"
                 android:text="0.0\u00B0"
                 android:textSize="45dp" />
@@ -46,8 +46,50 @@
                 android:text="N"
                 android:textSize="45dp" />
 
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="200dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/currLatVal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Lat: 0.0"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/currLongVal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Lon: 0.0"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
         </RelativeLayout>
-        
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="7">
+
+            <Button
+                android:id="@+id/refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="100dp"
+                android:text="Refresh" />
+
+        </RelativeLayout>
+
+
     </LinearLayout>
 
 
