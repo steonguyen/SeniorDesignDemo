@@ -266,16 +266,20 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             for(int i = 0; i <hashMapList.size(); i++){
 //                HashMap<String,String> location_item = hashMapList.get(i);
                 String name = hashMapList.get(i).get("name");
-                String place_id = hashMapList.get(i).get("place_id");
+//                String place_id = hashMapList.get(i).get("place_id");
                 String rating = hashMapList.get(i).get("rating");
                 String latitude = hashMapList.get(i).get("latitude");
                 String longitude = hashMapList.get(i).get("longitude");
+                String diff_angle = hashMapList.get(i).get("diff_angle");
+                String isOpen = hashMapList.get(i).get("isOpen");
                 if(name != null || latitude != null || longitude != null) {
                     locationList.add(new locationObject(name,
-                            "ID: " + place_id,
+                            "ID: " + hashMapList.get(i).get("place_id"),
                             "rating: " + rating,
                             "lat: " + latitude,
-                            "lng: " + longitude
+                            "lng: " + longitude,
+                            "ang: " + diff_angle,
+                            isOpen
                             ));
                 }
             }

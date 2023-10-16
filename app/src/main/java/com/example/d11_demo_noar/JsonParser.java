@@ -42,12 +42,24 @@ public class JsonParser {
             double angle = Math.toDegrees(theta);
             double angleDiff = Math.abs(angle - positiveAngle);
 
+            String diff_angle = Double.toString(angleDiff);
+
+            JSONObject opening_hours = object.getJSONObject("opening_hours");
+            boolean open_now = opening_hours.getBoolean("open_now");
+            String isOpen = "Open!";
+            if(!open_now){
+                isOpen = "Closed!";
+            }
+
+
 
             dataList.put("name", name);
             dataList.put("place_id", place_id);
             dataList.put("rating", rating);
             dataList.put("latitude", latitude);
             dataList.put("longitude", longitude);
+            dataList.put("diff_angle", diff_angle);
+            dataList.put("isOpen", isOpen);
 
 
         } catch (JSONException e) {

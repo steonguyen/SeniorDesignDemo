@@ -36,6 +36,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         holder.latitude.setText(listItem.getLatitude());
         holder.longitude.setText(listItem.getLongitude());
         holder.rating.setText(listItem.getRating());
+        holder.diff_angle.setText(listItem.getDiff_angle());
+        holder.isOpen.setText(listItem.getIsOpen());
     }
 
     @Override
@@ -49,6 +51,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         TextView rating;
         TextView latitude;
         TextView longitude;
+        TextView diff_angle;
+        TextView isOpen;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -57,6 +61,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             rating = itemView.findViewById(R.id.rating);
             latitude = itemView.findViewById(R.id.latitude);
             longitude = itemView.findViewById(R.id.longitude);
+            diff_angle = itemView.findViewById(R.id.diff_angle);
+            isOpen = itemView.findViewById(R.id.isOpen);
 
         }
     }

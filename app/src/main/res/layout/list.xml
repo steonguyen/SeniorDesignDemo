@@ -50,6 +50,21 @@
             android:layout_marginLeft="150dp"
             android:text="place_id" />
 
+        <TextView
+            android:id="@+id/diff_angle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="75dp"
+            android:layout_marginLeft="120dp"
+            android:text="diff_angle" />
+
+        <TextView
+            android:id="@+id/isOpen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="75dp"
+            android:text="isOpen" />
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
