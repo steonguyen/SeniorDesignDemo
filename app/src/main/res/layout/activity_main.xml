@@ -74,31 +74,31 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="7">
-
-            <Button
-                android:id="@+id/refresh"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="100dp"
-                android:text="Refresh" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
             android:id="@+id/idhome"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="80">
+            android:layout_weight="72">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/display_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10">
+
+            <Button
+                android:id="@+id/refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="147dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="100dp"
+                android:text="Search" />
+
         </RelativeLayout>
 
     </LinearLayout>

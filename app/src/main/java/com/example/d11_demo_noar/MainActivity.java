@@ -214,9 +214,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private void getData(double latitude, double longitude, String radius) {
         home.setVisibility(View.VISIBLE);
         String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "," + longitude + "&radius=" + radius + "&key=AIzaSyBAyn3y0awsDMe0x7oUZ9i_iiu61lDWCR0";
-        String placeid = "ChIJgUWV1jbKRIYR-RaDGSfFUSY";
-        String fields = "name%2Cplace_id%2Cgeometry%2Crating%2Copening_hours%2Creviews";
-        String url2 = "https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeid + "&fields=" + fields + "&reviews_sort=most_relevant" + "&key=AIzaSyBAyn3y0awsDMe0x7oUZ9i_iiu61lDWCR0";
         new PlaceTask().execute(url);
     }
 
@@ -236,6 +233,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         @Override
         protected void onPostExecute(String s) {
+            System.out.println("STREEE: " + s);
             new ParserTask().execute(s);
         }
     }

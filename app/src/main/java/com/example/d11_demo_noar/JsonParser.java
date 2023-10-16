@@ -80,21 +80,71 @@ public class JsonParser {
 
     public List<HashMap<String, String>> parseResult(JSONObject object, double latitude, double longitude, double angle) throws JSONException {
         JSONArray jsonArray = null;
-//        JSONObject jsonObject = null;
+
         lat = latitude;
         lng = longitude;
         fangle = angle;
         try {
             jsonArray = object.getJSONArray("results");
-//            jsonObject = object.getJSONObject("result");
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
         return parseJsonArray(jsonArray);
-//        HashMap<String, String> bruh = parseJsonObject(jsonObject);
-//        List<HashMap<String, String>> bruhlist = new ArrayList<>();
-//        bruhlist.add(bruh);
-//        return bruhlist;
+
 
     }
+
+    /*
+
+    DETAILS
+
+
+     */
+
+    public HashMap<String, String> parseDetailsResult(JSONObject object) throws JSONException {
+        HashMap<String, String> detailMap = new HashMap<>();
+        JSONObject detailsResult = null;
+        System.out.println("BRUHHH: ");
+
+        try {
+            detailsResult = object.getJSONObject("result");
+
+            String name = detailsResult.getString("name");
+            System.out.println("BRUHHH: " + name);
+            String formatted_address = "address";//detailsResult.getString("formatted_address");
+            String formatted_phone_number = "phone number";//detailsResult.getString("formatted_phone_number");
+            String website = "website";//detailsResult.getString("website");
+            String googleurl = "googleurl";//detailsResult.getString("url");
+            String price_level = "price_level";//Integer.toString(detailsResult.getInt("price_level"));
+            String rating_det = detailsResult.getString("rating");
+
+            detailMap.put("name", name);
+            detailMap.put("formatted_address", formatted_address);
+            detailMap.put("formatted_phone_number", formatted_phone_number);
+            detailMap.put("website", website);
+            detailMap.put("googleurl", googleurl);
+            detailMap.put("price_level", price_level);
+            detailMap.put("rating_det", rating_det);
+
+
+            JSONArray reviews = detailsResult.getJSONArray("reviews");
+            String rating1 = Integer.toString(((JSONObject) reviews.get(0)).getInt("rating"));
+            String text1 = "[" + rating1 + "] " + ((JSONObject) reviews.get(0)).getString("text");
+            detailMap.put("review1", text1);
+            if(reviews.length() > 1) {
+                String rating2 = Integer.toString(((JSONObject) reviews.get(1)).getInt("rating"));
+                String text2 = "[" + rating1 + "] " + ((JSONObject) reviews.get(1)).getString("text");
+                detailMap.put("review2", text2);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return detailMap;
+
+    }
+
+
+
 }

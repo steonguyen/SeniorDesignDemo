@@ -46,7 +46,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         holder.rating.setText(listItem.getRating());
         holder.diff_angle.setText(listItem.getDiff_angle());
         holder.isOpen.setText(listItem.getIsOpen());
-        holder.place_id_string = listItem.getPlace_id();
+        holder.place_id_string = listItem.getPlace_id().substring(4);
 
     }
 
@@ -81,7 +81,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             detail_search.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    System.out.println("BRUHHH" + place_id_string);
                     openDetailActivity(place_id_string);
                 }
             });
