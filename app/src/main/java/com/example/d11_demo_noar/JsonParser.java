@@ -19,6 +19,7 @@ public class JsonParser {
         try {
             String name = object.getString("name");
             String place_id = object.getString("place_id");
+            System.out.println("Place ID: " + place_id);
             String rating = object.getString("rating");
             JSONObject geometry = object.getJSONObject("geometry");
             JSONObject location = geometry.getJSONObject("location");
@@ -76,16 +77,24 @@ public class JsonParser {
         return dataList;
     }
 
+
     public List<HashMap<String, String>> parseResult(JSONObject object, double latitude, double longitude, double angle) throws JSONException {
         JSONArray jsonArray = null;
+//        JSONObject jsonObject = null;
         lat = latitude;
         lng = longitude;
         fangle = angle;
         try {
             jsonArray = object.getJSONArray("results");
+//            jsonObject = object.getJSONObject("result");
         } catch (JSONException e) {
             e.printStackTrace();
         }
         return parseJsonArray(jsonArray);
+//        HashMap<String, String> bruh = parseJsonObject(jsonObject);
+//        List<HashMap<String, String>> bruhlist = new ArrayList<>();
+//        bruhlist.add(bruh);
+//        return bruhlist;
+
     }
 }

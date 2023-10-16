@@ -6,9 +6,7 @@ public class locationObject {
     private String rating;
     private String latitude;
     private String longitude;
-
     private String diff_angle;
-
     private String isOpen;
 
     public locationObject(String name, String place_id, String rating, String latitude, String longitude, String diff_angle, String isOpen){

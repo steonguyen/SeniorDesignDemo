@@ -7,6 +7,7 @@
     android:layout_gravity="center"
     android:layout_margin="4dp"
     android:background="@android:color/transparent"
+    android:visibility="visible"
     app:cardCornerRadius="10dp"
     app:cardElevation="6dp">
 
@@ -46,16 +47,16 @@
             android:id="@+id/place_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
             android:layout_marginLeft="150dp"
+            android:layout_marginTop="50dp"
             android:text="place_id" />
 
         <TextView
             android:id="@+id/diff_angle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="75dp"
             android:layout_marginLeft="120dp"
+            android:layout_marginTop="75dp"
             android:text="diff_angle" />
 
         <TextView
@@ -64,6 +65,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="75dp"
             android:text="isOpen" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/detail_search"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:color="#00000000"
+            android:background="?android:attr/selectableItemBackground"/>
 
     </RelativeLayout>
 

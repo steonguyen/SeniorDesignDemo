@@ -38,6 +38,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import android.content.Context;
+import android.content.Intent;
 
 import java.security.Permission;
 
@@ -63,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     private Button refreshBut;
 
+
     TextView currLatVal, currLongVal;
 
     private double user_lat, user_long;
@@ -74,6 +77,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private RelativeLayout home;
     private RecyclerView recycler;
     private MyAdapter adapter;
+
+    // DETAILS
+
+    private RelativeLayout poppy;
+    private TextView top_review_textview;
 
 
 
@@ -103,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
         });
 
+
         double[] location_coordinates = getUserCoords(locationManager);
         user_lat = location_coordinates[0];
         user_long = location_coordinates[1];
@@ -111,7 +120,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         getData(user_lat, user_long, radius);
 
 
-        adapter = new MyAdapter(this, locationList);
+        adapter = new MyAdapter(this, locationList, new ClickListener() {
+            @Override
+            public void onPositionClicked(int position) {
+
+            }
+        });
         recycler.setAdapter(adapter);
         recycler.setLayoutManager(new LinearLayoutManager(this));
 
@@ -200,8 +214,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private void getData(double latitude, double longitude, String radius) {
         home.setVisibility(View.VISIBLE);
         String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "," + longitude + "&radius=" + radius + "&key=AIzaSyBAyn3y0awsDMe0x7oUZ9i_iiu61lDWCR0";
+        String placeid = "ChIJgUWV1jbKRIYR-RaDGSfFUSY";
+        String fields = "name%2Cplace_id%2Cgeometry%2Crating%2Copening_hours%2Creviews";
+        String url2 = "https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeid + "&fields=" + fields + "&reviews_sort=most_relevant" + "&key=AIzaSyBAyn3y0awsDMe0x7oUZ9i_iiu61lDWCR0";
         new PlaceTask().execute(url);
     }
+
 
     private class PlaceTask extends AsyncTask<String, Integer, String> {
 
@@ -272,7 +290,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 String longitude = hashMapList.get(i).get("longitude");
                 String diff_angle = hashMapList.get(i).get("diff_angle");
                 String isOpen = hashMapList.get(i).get("isOpen");
-                if(name != null || latitude != null || longitude != null) {
+                if(name != null) {
                     locationList.add(new locationObject(name,
                             "ID: " + hashMapList.get(i).get("place_id"),
                             "rating: " + rating,
@@ -282,13 +300,19 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                             isOpen
                             ));
                 }
+
             }
             System.out.println("NUM OF LOADED LOCATIONS: " + locationList.size());
             create(locationList);
         }
     }
     public void create(ArrayList<locationObject> list){
-        adapter = new MyAdapter(this, locationList);
+        adapter = new MyAdapter(this, locationList, new ClickListener() {
+            @Override
+            public void onPositionClicked(int position) {
+
+            }
+        });
         recycler.setAdapter(adapter);
         recycler.setLayoutManager(new LinearLayoutManager(this));
     }
